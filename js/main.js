@@ -149,6 +149,18 @@
     // Mostrar aviso de rate limit si ya se alcanzó el límite
     updateRateLimitUI();
 
+    // Mejora UX: Clic simple para sumar o quitar opciones sin requerir la tecla Ctrl
+    const multiSelect = form.querySelector('#input-tipo-seguro');
+    if (multiSelect) {
+      multiSelect.addEventListener('mousedown', function (e) {
+        if (e.target && e.target.tagName === 'OPTION') {
+          e.preventDefault();
+          e.target.selected = !e.target.selected;
+          multiSelect.dispatchEvent(new Event('change'));
+        }
+      });
+    }
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
@@ -159,12 +171,15 @@
         return;
       }
 
+      // Recolectar todas las opciones seleccionadas
+      const selectedOpts = Array.from(form.querySelectorAll('#input-tipo-seguro option:checked')).map(opt => opt.value);
+
       // Recolectar datos del formulario
       const formData = {
         nombre: form.querySelector('#input-nombre').value.trim(),
         email: form.querySelector('#input-email').value.trim(),
         telefono: form.querySelector('#input-telefono').value.trim(),
-        tipoSeguro: form.querySelector('#input-tipo-seguro').value,
+        tipoSeguro: selectedOpts.length > 0 ? selectedOpts.join(', ') : 'Consulta general',
         mensaje: form.querySelector('#input-mensaje').value.trim(),
       };
 
