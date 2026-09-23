@@ -4,12 +4,12 @@
    las tarjetas de presentación de la clienta)
    ============================================ */
 :root {
-  --color-primary: #1a3a5c;
-  --color-primary-light: #2a5a8c;
-  --color-primary-dark: #0e2240;
-  --color-accent: #c8a44e;
-  --color-accent-light: #e0c472;
-  --color-accent-dark: #a8862e;
+  --color-primary: #1a6b5a;
+  --color-primary-light: #2a8b7a;
+  --color-primary-dark: #0e4a3e;
+  --color-accent: #e8834a;
+  --color-accent-light: #f0a070;
+  --color-accent-dark: #c06030;
   --color-bg-light: #f8f9fa;
   --color-bg-dark: #1a1a2e;
   --color-text-dark: #2c2c2c;
@@ -18,7 +18,7 @@
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #128C7E;
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(26,58,92,0.92) 0%, rgba(14,34,64,0.88) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(26,107,90,0.92) 0%, rgba(14,74,62,0.88) 100%);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);

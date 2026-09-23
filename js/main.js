@@ -10,8 +10,8 @@
      ------------------------------------------ */
   const CONFIG = {
     // PLACEHOLDER: Reemplazar con datos reales de la clienta
-    whatsappNumber: '5491100000000',        // Número con código de país sin + ni espacios
-    emailTo: 'contacto@ejemplo.com.ar',     // Email destino para mailto fallback
+    whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
+    emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
     formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // Reemplazar con ID real de Formspree
     dailyEmailLimit: 2,                     // Máximo de emails vía Formspree por día por navegador
     storageKey: 'seguro_email_rate',        // Key de localStorage para rate limiting
@@ -85,13 +85,31 @@
      ------------------------------------------ */
   function generateWhatsAppLink(insuranceType) {
     const messages = {
-      default: '¡Hola! Me gustaría recibir más información sobre sus servicios de seguros.',
-      'seguro-automotor': '¡Hola! Me interesa cotizar un *Seguro Automotor*. ¿Podrían brindarme información?',
-      'seguro-hogar': '¡Hola! Me interesa cotizar un *Seguro de Hogar*. ¿Podrían brindarme información?',
-      'seguro-vida': '¡Hola! Me interesa cotizar un *Seguro de Vida y Accidentes Personales*. ¿Podrían brindarme información?',
-      'seguro-comercio': '¡Hola! Me interesa cotizar un *Seguro Integral de Comercio*. ¿Podrían brindarme información?',
-      'seguro-rc': '¡Hola! Me interesa cotizar un *Seguro de Responsabilidad Civil* para mi empresa. ¿Podrían brindarme información?',
-      'seguro-art': '¡Hola! Me interesa cotizar una *ART / Riesgos del Trabajo*. ¿Podrían brindarme información?',
+      default: '¡Hola Laura! Me gustaría recibir más información sobre sus servicios de seguros.',
+      'seguro-automotor': '¡Hola Laura! Me interesa cotizar un *Seguro Automotor*. ¿Podrías brindarme información?',
+      'seguro-hogar': '¡Hola Laura! Me interesa cotizar un *Seguro de Hogar*. ¿Podrías brindarme información?',
+      'tecno-portatil': '¡Hola Laura! Me interesa cotizar un *Seguro de Tecno Portátil*. ¿Podrías brindarme información?',
+      'seguro-motos': '¡Hola Laura! Me interesa cotizar un *Seguro para Motos*. ¿Podrías brindarme información?',
+      'movilidad-sustentable': '¡Hola Laura! Me interesa cotizar un seguro de *Movilidad Sustentable*. ¿Podrías brindarme información?',
+      'accidentes-personales': '¡Hola Laura! Me interesa cotizar un seguro de *Accidentes Personales*. ¿Podrías brindarme información?',
+      'vida-individual': '¡Hola Laura! Me interesa cotizar un *Seguro de Vida Individual*. ¿Podrías brindarme información?',
+      'garantia-alquileres': '¡Hola Laura! Me interesa cotizar un *Seguro de Garantía para Alquileres*. ¿Podrías brindarme información?',
+      'embarcaciones': '¡Hola Laura! Me interesa cotizar un seguro para *Embarcaciones de Placer*. ¿Podrías brindarme información?',
+      'seguro-salud': '¡Hola Laura! Me interesa cotizar un *Seguro de Salud*. ¿Podrías brindarme información?',
+      'seguro-sepelio': '¡Hola Laura! Me interesa cotizar un *Seguro de Sepelio*. ¿Podrías brindarme información?',
+      'bolso-protegido': '¡Hola Laura! Me interesa cotizar *Bolso Protegido*. ¿Podrías brindarme información?',
+      'seguro-comercio': '¡Hola Laura! Me interesa cotizar un *Seguro para Comercios y PyMEs*. ¿Podrías brindarme información?',
+      'seguro-consorcio': '¡Hola Laura! Me interesa cotizar un *Seguro Integral de Consorcio*. ¿Podrías brindarme información?',
+      'seguro-art': '¡Hola Laura! Me interesa cotizar una *ART / Riesgos del Trabajo*. ¿Podrías brindarme información?',
+      'seguro-caucion': '¡Hola Laura! Me interesa cotizar un *Seguro de Caución*. ¿Podrías brindarme información?',
+      'rc-profesional': '¡Hola Laura! Me interesa cotizar un seguro de *Responsabilidad Civil Profesional*. ¿Podrías brindarme información?',
+      'rc-eventos': '¡Hola Laura! Me interesa cotizar un seguro de *RC para Eventos*. ¿Podrías brindarme información?',
+      'seguro-transporte': '¡Hola Laura! Me interesa cotizar un *Seguro de Transporte*. ¿Podrías brindarme información?',
+      'seguro-tecnico': '¡Hola Laura! Me interesa cotizar un *Seguro Técnico para Empresas*. ¿Podrías brindarme información?',
+      'seguro-agrario': '¡Hola Laura! Me interesa cotizar *Seguros Agrarios*. ¿Podrías brindarme información?',
+      'seguro-granizo': '¡Hola Laura! Me interesa cotizar un *Seguro contra Granizo*. ¿Podrías brindarme información?',
+      'seguro-incendio': '¡Hola Laura! Me interesa cotizar un *Seguro contra Incendio*. ¿Podrías brindarme información?',
+      'vida-colectivo': '¡Hola Laura! Me interesa cotizar un *Seguro de Vida Colectivo*. ¿Podrías brindarme información?',
     };
 
     const message = messages[insuranceType] || messages.default;
