@@ -37,9 +37,16 @@
   <!-- ============================
        NAVBAR
        ============================ -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Laura<span class="brand-accent">Urzich</span></a>
+      <a class="navbar-brand brand-lockup" href="#inicio">
+        <img src="src/Signature.svg" alt="Firma Laura Urzich" class="brand-signature">
+        <div class="brand-divider"></div>
+        <div class="brand-text">
+          <span class="brand-name">Laura Urzich</span>
+          <span class="brand-title">Productora Asesora de Seguros <span class="brand-mat">Mat. 107671</span></span>
+        </div>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Menú de navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -316,7 +323,17 @@
             </a>
           </div>
         </div>
-
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card h-100">
+            <span class="category-badge badge-personal">Personal</span>
+            <div class="service-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+            <h5>Seguro de Vida Individual</h5>
+            <p>Garantiza protección a futuro, a vos y a tu familia.</p>
+            <a href="#" class="btn btn-whatsapp btn-sm mt-auto" data-whatsapp="vida-individual">
+              <i class="bi bi-whatsapp"></i>Cotizar por WhatsApp
+            </a>
+          </div>
+        </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="350">
           <div class="service-card h-100">
             <span class="category-badge badge-personal">Personal</span>
@@ -415,10 +432,10 @@
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="120">
           <div class="service-card h-100">
             <span class="category-badge badge-comercial">Comercial</span>
-            <div class="service-icon"><i class="bi bi-heart-pulse-fill"></i></div>
-            <h5>Seguro de Vida Individual</h5>
-            <p>Garantiza protección a futuro, a vos y a tu familia.</p>
-            <a href="#" class="btn btn-whatsapp btn-sm mt-auto" data-whatsapp="vida-individual">
+            <div class="service-icon"><i class="bi bi-people-fill"></i></div>
+            <h5>Seguro de Vida Colectivo</h5>
+            <p>Protección empresarial ante fallecimiento o incapacidad de trabajadores.</p>
+            <a href="#" class="btn btn-whatsapp btn-sm mt-auto" data-whatsapp="vida-colectivo">
               <i class="bi bi-whatsapp"></i>Cotizar por WhatsApp
             </a>
           </div>
@@ -511,17 +528,6 @@
             </a>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="550">
-          <div class="service-card h-100">
-            <span class="category-badge badge-comercial">Comercial</span>
-            <div class="service-icon"><i class="bi bi-people-fill"></i></div>
-            <h5>Seguro de Vida Colectivo</h5>
-            <p>Protección empresarial ante fallecimiento o incapacidad de trabajadores.</p>
-            <a href="#" class="btn btn-whatsapp btn-sm mt-auto" data-whatsapp="vida-colectivo">
-              <i class="bi bi-whatsapp"></i>Cotizar por WhatsApp
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -592,6 +598,7 @@
                         <option value="Comercios y PyMEs">Comercios y PyMEs</option>
                         <option value="Consorcio">Consorcio</option>
                         <option value="ART">ART</option>
+                        <option value="Vida Colectivo">Vida Colectivo</option>
                         <option value="Caución">Caución</option>
                         <option value="RC Profesional">RC Profesional</option>
                         <option value="RC Eventos">RC Eventos</option>
@@ -600,7 +607,6 @@
                         <option value="Seguros Agrarios">Seguros Agrarios</option>
                         <option value="Granizo">Granizo</option>
                         <option value="Incendio">Incendio</option>
-                        <option value="Vida Colectivo">Vida Colectivo</option>
                       </optgroup>
                     </select>
                   </div>

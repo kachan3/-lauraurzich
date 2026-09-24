@@ -71,33 +71,103 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================
    Navbar
    ============================================ */
+/* ============================================
+   Navbar
+   ============================================ */
 .navbar {
-  padding: 1rem 0;
+  padding: 0.65rem 0;
   transition: var(--transition-base);
-  background: transparent !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1030;
 }
 
 .navbar.scrolled {
-  background: rgba(26, 58, 92, 0.97) !important;
-  padding: 0.5rem 0;
-  box-shadow: var(--shadow-md);
+  padding: 0.45rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(10px);
 }
 
-.navbar-brand {
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--color-text-light) !important;
-  letter-spacing: -0.5px;
+/* Brand Lockup: Firma a la izquierda + Nombre y Título apilados */
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  padding: 0;
 }
 
-.navbar-brand .brand-accent {
-  color: var(--color-accent);
+.brand-signature {
+  height: 48px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.brand-divider {
+  width: 1.5px;
+  height: 42px;
+  background: var(--color-primary);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 48px; /* Mide exactamente lo mismo que la firma */
+  padding: 2px 0;
+}
+
+.brand-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-primary) !important; /* Color base #2d707b */
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.brand-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--color-accent) !important; /* Color de resalte #ff914d */
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.brand-title .brand-mat {
+  color: var(--color-primary) !important;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 575.98px) {
+  .brand-signature {
+    height: 40px;
+  }
+  .brand-divider {
+    height: 36px;
+  }
+  .brand-text {
+    height: 40px;
+  }
+  .brand-name {
+    font-size: 1.15rem;
+  }
+  .brand-title {
+    font-size: 0.65rem;
+  }
 }
 
 .nav-link {
-  color: rgba(255,255,255,0.85) !important;
-  font-weight: 500;
+  color: var(--color-text-dark) !important; /* #2a2a2a */
+  font-weight: 600;
   font-size: 0.95rem;
   padding: 0.5rem 1rem !important;
   transition: var(--transition-base);
@@ -106,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-accent-light) !important;
+  color: var(--color-accent) !important; /* #ff914d */
 }
 
 .nav-link::after {
@@ -127,16 +197,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-toggler {
-  border: none;
-  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
 }
 
 .navbar-toggler:focus {
-  box-shadow: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
 }
 
 .navbar-toggler-icon {
-  filter: invert(1);
+  filter: none;
 }
 
 /* ============================================
@@ -149,6 +220,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   background: var(--gradient-hero);
   overflow: hidden;
+  padding-top: 85px;
+  padding-bottom: 40px;
 }
 
 .hero::before {
