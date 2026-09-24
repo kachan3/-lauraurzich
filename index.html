@@ -127,7 +127,7 @@
       <div class="row g-4">
         <!-- Columna: Sobre mí -->
         <div class="col-lg-7" data-aos="fade-right">
-          <div class="about-card">
+          <div class="about-card h-100">
             <h4 class="mb-3"><i class="bi bi-person-badge text-accent me-2"></i>Sobre Mí</h4>
             <p class="text-muted mb-4">
               ¡Hola! Soy Laura, Productora Asesora de Seguros. Hace más de 14 años que acompaño a personas a proteger lo que más valoran. Trabajo con claridad, empatía y compromiso. Mi objetivo es que entiendas tus opciones y elijas con confianza.
@@ -163,24 +163,26 @@
           </div>
         </div>
         <!-- Columna: Credencial + QR -->
-        <div class="col-lg-5" data-aos="fade-left">
+        <div class="col-lg-5 d-flex flex-column justify-content-between" data-aos="fade-left">
           <div class="credential-card">
             <h5><i class="bi bi-qr-code me-2"></i>Credencial Profesional</h5>
-            <p class="small opacity-75">Productora Asesora de Seguros habilitada por la Superintendencia de Seguros de la Nación</p>
+            <p class="small opacity-75 mb-2">Productora Asesora de Seguros habilitada por la Superintendencia de Seguros de la Nación</p>
             <div class="credential-qr">
               <div class="text-center text-muted">
-                <i class="bi bi-qr-code" style="font-size: 5rem; color: var(--color-primary);"></i>
-                <p class="small mt-2 mb-0" style="color: var(--color-primary);">QR Matrícula</p>
+                <i class="bi bi-qr-code" style="font-size: 4.2rem; color: var(--color-primary);"></i>
+                <p class="small mt-1 mb-0 fw-semibold" style="color: var(--color-primary); font-size: 0.75rem;">QR Matrícula</p>
               </div>
             </div>
-            <p class="mt-3 mb-1 fw-bold">Matrícula N° 107671</p>
+            <p class="mt-2 mb-1 fw-bold">Matrícula N° 107671</p>
             <p class="small opacity-75 mb-0">Verificable en el registro de la SSN</p>
           </div>
           <!-- Mini tarjeta adicional debajo -->
-          <div class="about-card mt-4 text-center">
-            <i class="bi bi-patch-check-fill text-accent" style="font-size: 2rem;"></i>
-            <h5 class="mt-2 mb-1">Registro Verificable</h5>
-            <p class="text-muted small mb-2">Escaneá el código QR para verificar la matrícula en el sitio oficial de la SSN.</p>
+          <div class="about-card-mini mt-3 text-center">
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+              <i class="bi bi-patch-check-fill text-accent" style="font-size: 1.3rem;"></i>
+              <h6 class="mb-0 fw-bold">Registro Verificable</h6>
+            </div>
+            <p class="text-muted small mb-2">Podés verificar la matrícula oficial directamente en el registro de la SSN.</p>
             <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">
               <i class="bi bi-box-arrow-up-right me-1"></i>Verificar en SSN
             </a>
@@ -705,12 +707,15 @@
           <p class="small mb-1"><a href="mailto:seguros@lauraurzich.com.ar" class="text-decoration-none text-light"><i class="bi bi-envelope me-2 text-accent"></i>seguros@lauraurzich.com.ar</a></p>
           <p class="small mb-1"><a href="https://wa.me/5493487706399" class="text-decoration-none text-light" target="_blank"><i class="bi bi-whatsapp me-2 text-accent"></i>+54 9 3487 706399</a></p>
           <p class="small mb-3"><i class="bi bi-geo-alt me-2 text-accent"></i>Zárate, Pcia de Bs.As.</p>
-          <div class="d-flex gap-2">
-            <a href="#" class="btn btn-sm btn-whatsapp" data-whatsapp="default">
+          <div class="social-buttons mt-3">
+            <a href="https://wa.me/5493487706399" class="social-btn social-btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" data-whatsapp="default" title="Escribinos por WhatsApp">
               <i class="bi bi-whatsapp"></i>
             </a>
-            <a href="https://instagram.com/lauraurzich" target="_blank" class="btn btn-sm btn-outline-light rounded-circle">
+            <a href="https://instagram.com/lauraurzich" target="_blank" rel="noopener" class="social-btn social-btn-instagram" aria-label="Instagram" title="Seguinos en Instagram">
               <i class="bi bi-instagram"></i>
+            </a>
+            <a href="mailto:seguros@lauraurzich.com.ar" class="social-btn social-btn-email" aria-label="Email" title="Envianos un Email">
+              <i class="bi bi-envelope-fill"></i>
             </a>
           </div>
         </div>
