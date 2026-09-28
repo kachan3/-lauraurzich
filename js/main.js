@@ -5,6 +5,11 @@
 (function () {
   'use strict';
 
+  // Forzar HTTPS en producción si el usuario accede por HTTP no seguro
+  if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && !location.hostname.endsWith('.local')) {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+  }
+
   /* ------------------------------------------
      Configuration
      ------------------------------------------ */

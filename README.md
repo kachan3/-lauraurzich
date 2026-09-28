@@ -56,14 +56,38 @@ El sitio implementa un rate limiter client-side con localStorage:
 - Si se supera el límite, el formulario abre automáticamente el cliente de correo del usuario (mailto:)
 - Si Formspree falla por cualquier razón (cuota, red), también se activa el fallback a mailto
 
-## Placeholders Pendientes
-- [ ] Datos de contacto reales (teléfono, email, dirección)
-- [ ] Logos de compañías aseguradoras
-- [ ] Imagen QR de matrícula
-- [ ] Foto profesional
-- [ ] Paleta de colores de las tarjetas de presentación
-- [ ] Nombre del dominio .com.ar
-- [ ] ID de Formspree
+## Configuración de Dominio y Certificado SSL (HTTPS)
+
+Para que el dominio `lauraurzich.com.ar` funcione con el candado verde/gris de **Sitio Seguro (HTTPS)** en GitHub Pages:
+
+### 1. En el proveedor de DNS (NIC.ar / Cloudflare / DonWeb / etc.):
+Configurar los siguientes registros DNS para `lauraurzich.com.ar`:
+
+- **Registros A (para el dominio raíz `lauraurzich.com.ar`):**
+  - Host: `@` (o en blanco) → `185.199.108.153`
+  - Host: `@` (o en blanco) → `185.199.109.153`
+  - Host: `@` (o en blanco) → `185.199.110.153`
+  - Host: `@` (o en blanco) → `185.199.111.153`
+
+- **Registro CNAME (para el subdominio `www.lauraurzich.com.ar`):**
+  - Host: `www` → `<tu-usuario-o-organizacion>.github.io`
+
+### 2. En GitHub Pages (Repositorio):
+1. Ir a **Settings** → pestaña **Pages**.
+2. En **Custom domain**, verificar que figure `lauraurzich.com.ar`.
+3. Tildar la casilla **"Enforce HTTPS"** (Forzar HTTPS). *Nota: si recién apuntaste las DNS, puede demorar entre 15 minutos y un par de horas en emitirse el certificado TLS gratuito de Let's Encrypt para habilitar el checkbox.*
+
+Una vez activado, cualquier persona que entre a `http://lauraurzich.com.ar` o `http://www.lauraurzich.com.ar` será redirigida automáticamente a `https://` con conexión cifrada y segura.
+
+## Estado del Proyecto
+- [x] Datos de contacto reales integrados
+- [x] Logos oficiales de aseguradoras (tarjetas 16:9 full-bleed uniformes)
+- [x] Código QR oficial SSN integrado y vinculado a REPAS
+- [x] Foto profesional de Laura Urzich integrada en el Hero
+- [x] Paleta de colores oficial aplicada
+- [x] CNAME configurado para `lauraurzich.com.ar`
+- [x] Políticas de seguridad CSP y forzado de HTTPS
+- [ ] ID de Formspree en `js/main.js` (pendiente asignar por la clienta)
 
 ## Licencia
 
