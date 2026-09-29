@@ -258,6 +258,18 @@
       }
 
       RateLimiter.increment();
+
+      // Disparar modal de éxito personalizado
+      const modalEl = document.getElementById('formSuccessModal');
+      const nameEl = document.getElementById('modal-user-name');
+      if (modalEl && typeof bootstrap !== 'undefined') {
+        if (nameEl) {
+          nameEl.textContent = formData.nombre ? `${formData.nombre}` : '';
+        }
+        const successModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        successModal.show();
+      }
+
       statusEl.textContent = '✅ ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
       statusEl.className = 'text-success';
       form.reset();
