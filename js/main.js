@@ -16,7 +16,7 @@
   const CONFIG = {
     whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
     emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
-    formspreeEndpoint: 'https://formspree.io/f/xdekyzel', // Endpoint Formspree oficial
+    formspreeEndpoint: 'https://formspree.io/f/xqpawloa', // Endpoint Formspree (test)
     dailyEmailLimit: 5,                     // Máximo de emails vía Formspree por día por navegador
     storageKey: 'seguro_email_rate',        // Key de localStorage para rate limiting
   };
