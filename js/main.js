@@ -16,10 +16,23 @@
   const CONFIG = {
     whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
     emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
-    formspreeEndpoint: 'https://formspree.io/f/xqpawloa', // Endpoint Formspree (test)
-    dailyEmailLimit: 5,                     // Máximo de emails vía Formspree por día por navegador
+    emailjs: {
+      serviceId: 'service_wfp9bap',
+      templateId: 'template_989xabe',
+      publicKey: 'DwzTsGbtuzj7urUys',
+    },
+    dailyEmailLimit: 8,                     // Máximo de emails automáticos por día por navegador
     storageKey: 'seguro_email_rate',        // Key de localStorage para rate limiting
   };
+
+  // Inicializar EmailJS SDK si está cargado
+  if (typeof emailjs !== 'undefined' && CONFIG.emailjs?.publicKey) {
+    try {
+      emailjs.init({ publicKey: CONFIG.emailjs.publicKey });
+    } catch (e) {
+      console.warn('Error inicializando EmailJS:', e);
+    }
+  }
 
   /* ------------------------------------------
      Rate Limiter (localStorage)
@@ -70,10 +83,14 @@
     },
 
     /**
-     * ¿Se puede enviar por Formspree?
+     * ¿Se puede enviar por email automático?
      */
-    canSendFormspree() {
+    canSendAutoEmail() {
       return this.getCount() < CONFIG.dailyEmailLimit;
+    },
+
+    canSendFormspree() {
+      return this.canSendAutoEmail();
     },
 
     /**
@@ -187,9 +204,9 @@
         mensaje: form.querySelector('#input-mensaje').value.trim(),
       };
 
-      if (RateLimiter.canSendFormspree()) {
-        // ► Ruta primaria: enviar vía Formspree
-        await sendViaFormspree(form, formData, statusEl, submitBtn, submitText);
+      if (RateLimiter.canSendAutoEmail()) {
+        // ► Ruta primaria: enviar vía EmailJS
+        await sendViaEmailJS(form, formData, statusEl, submitBtn, submitText);
       } else {
         // ► Ruta fallback: abrir mailto
         sendViaMailto(formData, statusEl);
@@ -198,43 +215,56 @@
   }
 
   /**
-   * Envía el formulario vía Formspree (AJAX).
+   * Envía el formulario vía EmailJS (SDK oficial o REST API).
    */
-  async function sendViaFormspree(form, formData, statusEl, submitBtn, submitText) {
+  async function sendViaEmailJS(form, formData, statusEl, submitBtn, submitText) {
     // UI: estado de carga
     submitBtn.disabled = true;
     submitText.textContent = 'Enviando...';
     statusEl.textContent = '';
     statusEl.className = '';
 
-    try {
-      const response = await fetch(CONFIG.formspreeEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          Nombre: formData.nombre,
-          Email: formData.email,
-          Teléfono: formData.telefono,
-          'Tipo de Seguro': formData.tipoSeguro,
-          Mensaje: formData.mensaje,
-        }),
-      });
+    // Preparar enlace de WhatsApp hacia el cliente para la plantilla
+    const cleanDigits = (formData.telefono || '').replace(/\D/g, '');
+    const waLink = cleanDigits.length >= 8 ? `https://wa.me/${cleanDigits}` : `https://wa.me/${CONFIG.whatsappNumber}`;
 
-      if (response.ok) {
-        RateLimiter.increment();
-        statusEl.textContent = '✅ ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
-        statusEl.className = 'text-success';
-        form.reset();
-        form.classList.remove('was-validated');
-        updateRateLimitUI();
+    const templateParams = {
+      nombre: formData.nombre,
+      email: formData.email,
+      telefono: formData.telefono,
+      tipo_seguro: formData.tipoSeguro,
+      mensaje: formData.mensaje || '(Sin mensaje adicional)',
+      whatsapp_link: waLink,
+      reply_to: formData.email,
+    };
+
+    try {
+      if (typeof emailjs !== 'undefined' && typeof emailjs.send === 'function') {
+        await emailjs.send(CONFIG.emailjs.serviceId, CONFIG.emailjs.templateId, templateParams);
       } else {
-        // Formspree falló (posiblemente cuota excedida) → fallback a mailto
-        console.warn('Formspree respondió con error, usando fallback mailto.');
-        sendViaMailto(formData, statusEl);
+        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            service_id: CONFIG.emailjs.serviceId,
+            template_id: CONFIG.emailjs.templateId,
+            user_id: CONFIG.emailjs.publicKey,
+            template_params: templateParams,
+          }),
+        });
+        if (!response.ok) {
+          throw new Error(`EmailJS HTTP ${response.status}: ${await response.text()}`);
+        }
       }
+
+      RateLimiter.increment();
+      statusEl.textContent = '✅ ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+      statusEl.className = 'text-success';
+      form.reset();
+      form.classList.remove('was-validated');
+      updateRateLimitUI();
     } catch (error) {
-      // Error de red → fallback a mailto
-      console.warn('Error de red con Formspree, usando fallback mailto:', error);
+      console.warn('EmailJS respondió con error, usando fallback mailto:', error);
       sendViaMailto(formData, statusEl);
     } finally {
       submitBtn.disabled = false;
