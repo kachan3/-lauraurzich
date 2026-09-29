@@ -214,11 +214,9 @@
         body: JSON.stringify({
           Nombre: formData.nombre,
           Email: formData.email,
-          _replyto: formData.email,
           Teléfono: formData.telefono,
           'Tipo de Seguro': formData.tipoSeguro,
           Mensaje: formData.mensaje,
-          _subject: `Nueva consulta web: ${formData.nombre} - ${formData.tipoSeguro}`,
         }),
       });
 
