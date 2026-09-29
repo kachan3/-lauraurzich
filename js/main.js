@@ -17,7 +17,7 @@
     whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
     emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
     emailjs: {
-      serviceId: 'service_wfp9bap',
+      serviceId: 'service_rie669u',
       templateId: 'template_989xabe',
       publicKey: 'DwzTsGbtuzj7urUys',
     },
