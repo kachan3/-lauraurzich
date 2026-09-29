@@ -14,11 +14,10 @@
      Configuration
      ------------------------------------------ */
   const CONFIG = {
-    // PLACEHOLDER: Reemplazar con datos reales de la clienta
     whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
     emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
-    formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // Reemplazar con ID real de Formspree
-    dailyEmailLimit: 2,                     // Máximo de emails vía Formspree por día por navegador
+    formspreeEndpoint: 'https://formspree.io/f/xdekyzel', // Endpoint Formspree oficial
+    dailyEmailLimit: 5,                     // Máximo de emails vía Formspree por día por navegador
     storageKey: 'seguro_email_rate',        // Key de localStorage para rate limiting
   };
 
@@ -213,11 +212,13 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          nombre: formData.nombre,
-          email: formData.email,
-          telefono: formData.telefono,
-          tipo_seguro: formData.tipoSeguro,
-          mensaje: formData.mensaje,
+          Nombre: formData.nombre,
+          Email: formData.email,
+          _replyto: formData.email,
+          Teléfono: formData.telefono,
+          'Tipo de Seguro': formData.tipoSeguro,
+          Mensaje: formData.mensaje,
+          _subject: `Nueva consulta web: ${formData.nombre} - ${formData.tipoSeguro}`,
         }),
       });
 
