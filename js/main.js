@@ -15,7 +15,7 @@
      ------------------------------------------ */
   const CONFIG = {
     whatsappNumber: '5493487706399',        // Número con código de país sin + ni espacios
-    emailTo: 'seguros@lauraurzich.com.ar',     // Email destino para mailto fallback
+    emailTo: 'contacto@lauraurzich.com.ar',     // Email destino para mailto fallback
     emailjs: {
       serviceId: 'service_rie669u',
       templateId: 'template_989xabe',
