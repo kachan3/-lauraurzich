@@ -295,6 +295,21 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.hero-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img {
+  max-height: 704px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3) !important;
+}
+
 /* ============================================
    Buttons
    ============================================ */
